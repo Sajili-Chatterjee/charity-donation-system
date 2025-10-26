@@ -10,7 +10,7 @@ def add_sample_data():
 
         # Donors data, avoid duplicates by checking before insert
         donors = [
-            {'name': 'Aishwarya Mitra', 'email': 'aishwarya@example.com', 'contact': '9876543210', 'payment_mode': 'UPI'},
+            {'name': 'Sajili Chatterjee', 'email': 'sajili@example.com', 'contact': '9876543210', 'payment_mode': 'UPI'},
             # Add other donors here...
         ]
 
