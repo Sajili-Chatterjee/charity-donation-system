@@ -1,10 +1,4 @@
-flask
-flask_sqlalchemy
+Flask
+Flask-SQLAlchemy
 python-dotenv
-google-generativeai
-sqlalchemy
-blinker
-itsdangerous
-jinja2
-markupsafe
-werkzeug
+SQLAlchemy
