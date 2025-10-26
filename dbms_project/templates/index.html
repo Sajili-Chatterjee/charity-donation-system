@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section id="hero" class="text-center py-5 bg-light">
+  <div class="container">
+    <h1 class="display-5 fw-bold text-primary">Welcome to Our Charity Foundation</h1>
+    <p class="lead text-muted">Empowering communities through education, healthcare, and social support.</p>
+    <a href="{{ url_for('campaigns_page') }}" class="btn btn-success btn-lg mt-3">Donate Now</a>
+  </div>
+</section>
+
+<!-- About Us -->
+<section id="about" class="container my-5">
+  <div class="row align-items-center">
+    <div class="col-md-6 mb-4 mb-md-0">
+      <img src="{{ url_for('static', filename='images/about_us.png') }}" alt="About Us">
+    </div>
+    <div class="col-md-6">
+      <h2>About Us</h2>
+      <p>Our foundation is dedicated to enhancing the quality of life for underprivileged communities. We focus on education, healthcare, and empowering individuals through social programs.</p>
+      <p>We collaborate with multiple charities and campaigns to maximize the impact of every donation.</p>
+      <a href="{{ url_for('contact') }}" class="btn btn-primary mt-2">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- Mission Section -->
+<section id="mission" class="bg-light py-5">
+  <div class="container text-center">
+    <div class="row">
+      <div class="col-md-4">
+        <h4>Our Mission</h4>
+        <p>To provide sustainable support to communities in need, focusing on education and healthcare programs.</p>
+      </div>
+      <div class="col-md-4">
+        <h4>Our Vision</h4>
+        <p>Creating empowered communities where every individual has access to basic needs and equal opportunities.</p>
+      </div>
+      <div class="col-md-4">
+        <h4>Our Impact</h4>
+        <p>Over 10,000 individuals have benefited from our programs across multiple regions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Floating Chatbot Button -->
+<div id="chatbot-floating" style="position:fixed; bottom:20px; right:20px; z-index:1000;">
+  <a href="{{ url_for('chatbot_page') }}">
+    <button id="chatbot-btn" style="border:none; background-color:#0d6efd; border-radius:50%; width:60px; height:60px; cursor:pointer;">
+      <img src="{{ url_for('static', filename='images/robot_icon.png') }}" style="width:100%; height:100%; border-radius:50%;" alt="Chatbot">
+    </button>
+  </a>
+</div>
+
+{% endblock %}

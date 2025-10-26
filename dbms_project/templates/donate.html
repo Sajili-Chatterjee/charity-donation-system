@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="text-center mb-4">Donate to "{{ campaign.title }}"</h1>
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <form method="POST">
+      <div class="mb-3">
+        <label for="name" class="form-label">Full Name</label>
+        <input type="text" class="form-control" id="name" name="name" required placeholder="Enter your name">
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="email" required placeholder="you@example.com">
+      </div>
+
+      <div class="mb-3">
+        <label for="contact" class="form-label">Contact Number</label>
+        <input type="tel" class="form-control" id="contact" name="contact" pattern="[0-9]{10}" placeholder="10-digit mobile number">
+      </div>
+
+      <div class="mb-3">
+        <label for="payment" class="form-label">Payment Mode</label>
+        <select class="form-select" id="payment" name="payment" required>
+          <option value="Credit Card">Credit Card</option>
+          <option value="Debit Card">Debit Card</option>
+          <option value="UPI">UPI</option>
+          <option value="Net Banking">Net Banking</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="amount" class="form-label">Amount (₹)</label>
+        <input type="number" class="form-control" id="amount" name="amount" required min="1" step="0.01" placeholder="Enter donation amount">
+      </div>
+
+      <!-- Quick suggestion buttons -->
+      <div class="mb-3 text-center">
+        <button type="button" class="btn btn-outline-primary m-1" onclick="setAmount(500)">₹500</button>
+        <button type="button" class="btn btn-outline-primary m-1" onclick="setAmount(1000)">₹1000</button>
+        <button type="button" class="btn btn-outline-primary m-1" onclick="setAmount(2500)">₹2500</button>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100 mt-2">Donate</button>
+    </form>
+  </div>
+</div>
+
+<script>
+function setAmount(value) {
+  document.getElementById('amount').value = value;
+}
+</script>
+{% endblock %}

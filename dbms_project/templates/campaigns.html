@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="mb-4 text-center">All Campaigns</h1>
+
+{% if campaigns and campaigns|length > 0 %}
+<div class="table-responsive">
+    <table class="table table-striped align-middle">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Goal Amount</th>
+                <th>Raised Amount</th>
+                <th>Status</th>
+                <th>Progress</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for c in campaigns %}
+            <tr>
+                <td>{{ c.title }}</td>
+                <td>₹{{ "{:,.2f}".format(c.goal_amount) }}</td>
+                <td>₹{{ "{:,.2f}".format(c.raised_amount) }}</td>
+                <td>{{ c.status }}</td>
+                <td>
+                    <div class="progress" style="height: 10px;">
+                        <div class="progress-bar bg-success" role="progressbar"
+                             style="width: {{ (c.raised_amount / c.goal_amount) * 100 if c.goal_amount else 0 }}%">
+                        </div>
+                    </div>
+                    <small>{{ ((c.raised_amount / c.goal_amount) * 100) | round(1) }}%</small>
+                </td>
+                <td>
+                    <a href="{{ url_for('donate', id=c.id) }}" class="btn btn-sm btn-success">Donate</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<p class="text-center text-muted">No campaigns available.</p>
+{% endif %}
+{% endblock %}

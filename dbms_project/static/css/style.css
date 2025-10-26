@@ -1,0 +1,84 @@
+/* === General === */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* === Navbar === */
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.nav-link {
+    transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-link:hover {
+    opacity: 0.85;
+}
+
+/* === Cards === */
+.card {
+    border-radius: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* === Buttons === */
+.btn.btn-success,
+.btn.btn-primary {
+    border-radius: 30px;
+    padding: 0.6rem 1.6rem;
+    font-weight: 500;
+}
+
+.btn-success:hover,
+.btn-primary:hover {
+    opacity: 0.9;
+}
+
+/* === Footer === */
+footer {
+    font-size: 0.9rem;
+}
+
+/* === Forms === */
+form label {
+    font-weight: 500;
+}
+
+form input,
+form select {
+    border-radius: 5px;
+}
+
+/* === Chat Box === */
+#chat-container {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    padding: 10px;
+    height: 500px;
+    overflow-y: auto;
+}
+
+#chat-container p {
+    margin: 5px 0;
+}
+
+#chat-container p strong {
+    color: #0d6efd;
+}
+

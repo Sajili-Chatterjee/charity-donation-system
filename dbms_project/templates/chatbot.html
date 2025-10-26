@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+  <h2 class="text-center text-primary mb-4">AI Chat Assistant 🤖</h2>
+  <div id="chat-container"
+       style="max-width:600px; margin:auto; border:1px solid #ccc; border-radius:10px;
+              padding:15px; height:500px; overflow-y:auto; background-color:#fefefe;">
+  </div>
+
+  <div class="input-group mt-3" style="max-width:600px; margin:auto;">
+    <input type="text" id="user-input" class="form-control"
+           placeholder="Ask something about our foundation...">
+    <button id="send-btn" class="btn btn-primary">Send</button>
+  </div>
+</div>
+
+<script>
+document.getElementById('send-btn').addEventListener('click', sendMessage);
+document.getElementById('user-input').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') sendMessage();
+});
+
+function sendMessage() {
+    const input = document.getElementById('user-input');
+    const message = input.value.trim();
+    if (!message) return;
+    
+    const chatBox = document.getElementById('chat-container');
+    const safeText = message.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    chatBox.innerHTML += `<p><strong>You:</strong> ${safeText}</p>`;
+    input.value = '';
+    chatBox.scrollTop = chatBox.scrollHeight;
+
+    chatBox.innerHTML += `<p id="typing" style="color:gray;"><em>Bot is typing...</em></p>`;
+
+    fetch('{{ url_for("chatbot") }}', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message })
+    })
+    .then(res => {
+        if (!res.ok) throw new Error('Network response not ok');
+        return res.json();
+    })
+    .then(data => {
+        document.getElementById('typing').remove();
+        const botReply = data.reply.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        chatBox.innerHTML += `<p><strong>Bot:</strong> ${botReply}</p>`;
+        chatBox.scrollTop = chatBox.scrollHeight;
+    })
+    .catch(err => {
+        document.getElementById('typing')?.remove();
+        chatBox.innerHTML += `<p style="color:red;"><strong>Bot:</strong> Sorry, there was an error.</p>`;
+    });
+}
+</script>
+{% endblock %}
